@@ -13,7 +13,7 @@
  *
  * @package ETHC
  * @author Tremi Dkhar
- * @since 0.1.0
+ * @since 0.1.1
  * @copyright Copyright (c) 2019, Tremi Dkhar
  */
 
@@ -66,7 +66,7 @@ final class Enter_Title_Here_Changer {
 
 		// Plugin Version.
 		if ( ! defined( 'ETHC_VERSION' ) ) {
-			define( 'ETHC_VERSION', '0.1.0' );
+			define( 'ETHC_VERSION', '0.1.1' );
 		}
 
 		// Plugin URI.
