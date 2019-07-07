@@ -17,7 +17,9 @@
  * @copyright Copyright (c) 2019, Tremi Dkhar
  */
 
-if ( ! defined( 'ABSPATH' ) ) die(); // phpcs:ignore Generic.ControlStructures.InlineControlStructure.NotAllowed
+if ( ! defined( 'ABSPATH' ) ) {
+	die( 0 );
+}
 
 /**
  * Main Enter_Title_Here_Changer class

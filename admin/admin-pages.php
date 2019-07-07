@@ -2,7 +2,8 @@
 /**
  * Admin management page for Enter Title Here settings
  *
- * @package ETHC\Admin
+ * @package ETHC
+ * @subpackage Admin
  * @since 0.1.0
  * @author Tremi Dkhar
  * @copyright Copyright (c) 2019, Tremi Dkhar
@@ -23,15 +24,21 @@ add_action( 'admin_init', 'ethc_register_settings' );
 function ethc_register_settings() {
 
 	register_setting( 'writing', 'ethc_settings', array( 'sanitize_callback' => 'ethc_sanitize' ) );
-	add_settings_section( 'ethc_sections', 'Enter Title Here Changer', 'ethc_settings_section_callback', 'writing' );
+	add_settings_section( 'ethc_sections', 'Enter Title Here Changer - Settings', 'ethc_settings_section_callback', 'writing' );
 
-	$posttypes = get_post_types();
+	$posttypes = get_post_types( '', 'object' );
+
+	// Remove post types that are not required to change title.
+	unset( $posttypes['attachment'], $posttypes['revision'], $posttypes['nav_menu_item'], $posttypes['custom_css'], $posttypes['customize_changeset'], $posttypes['oembed_cache'], $posttypes['user_request'], $posttypes['wp_block'] );
+
 	foreach ( $posttypes as $posttype ) {
+
 		$args = array(
-			'post_type' => $posttype,
-			'label_for' => $posttype,
+			'post_type' => $posttype->name,
+			'label_for' => $posttype->name,
 		);
-		add_settings_field( 'eth_new_title_' . $posttype, $posttype, 'ethc_settings_field_callback', 'writing', 'ethc_sections', $args );
+
+		add_settings_field( 'eth_new_title_' . $posttype->name, $posttype->labels->singular_name, 'ethc_settings_field_callback', 'writing', 'ethc_sections', $args );
 	}
 
 	add_settings_field( 'enter_new_title_uninstall_on_delete', 'Do you want to remove plugin data when plugin is removed?', 'ethc_settings_uninstall', 'writing', 'ethc_sections', array( 'label_for' => 'ethc_settings_uninstall' ) );
@@ -56,7 +63,7 @@ function ethc_settings_section_callback() {
 function ethc_settings_field_callback( $args ) {
 	$ethc_settings = get_option( 'ethc_settings' );
 	?>
-	<input type="text" id="<?php echo esc_attr( $args['label_for'] ); ?>" name="ethc_settings[<?php echo esc_attr( $args['post_type'] ); ?>]" value="<?php echo esc_attr( $ethc_settings[ $args['post_type'] ] ); ?>">
+	<input type="text" class="regular-text" id="<?php echo esc_attr( $args['label_for'] ); ?>" name="ethc_settings[<?php echo esc_attr( $args['post_type'] ); ?>]" value="<?php echo isset( $ethc_settings[ $args['post_type'] ] ) ? esc_attr( $ethc_settings[ $args['post_type'] ] ) : ''; ?>" />
 	<?php
 }
 
@@ -69,7 +76,7 @@ function ethc_settings_field_callback( $args ) {
 function ethc_settings_uninstall( $args ) {
 	$ethc_settings = get_option( 'ethc_settings' );
 	?>
-	<input type="checkbox" id="<?php echo esc_attr( $args['label_for'] ); ?>" name="ethc_settings[uninstall_on_delete]" <?php checked( true, $ethc_settings['uninstall_on_delete'] ); ?> >
+	<input type="checkbox" id="<?php echo esc_attr( $args['label_for'] ); ?>" name="ethc_settings[uninstall_on_delete]" <?php checked( true, isset( $ethc_settings['uninstall_on_delete'] ) ? $ethc_settings['uninstall_on_delete'] : false ); ?> />
 	<?php
 }
 
@@ -80,7 +87,15 @@ function ethc_settings_uninstall( $args ) {
  * @return array
  */
 function ethc_sanitize( $settings ) {
-	$settings['uninstall_on_delete'] = isset( $settings['uninstall_on_delete'] ) ? true : false;
+
+	$uninstall_data = isset( $settings['uninstall_on_delete'] ) ? $settings['uninstall_on_delete'] : '';
+
+	foreach ( $settings as $setting => $value ) {
+		$settings[ $setting ] = sanitize_text_field( $value );
+	}
+
+	// Restore uninstall setting.
+	$settings['uninstall_on_delete'] = isset( $uninstall_data ) ? true : false;
 
 	return $settings;
 }
