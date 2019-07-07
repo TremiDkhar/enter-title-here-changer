@@ -1,11 +1,11 @@
 <?php // phpcs:ignore WordPress.Files.FileName.InvalidClassFileName
 /**
  * Plugin Name: Enter Title Here Changer
- * Plugin URI: https://tremidkhar.com/plugins/enter-title-here-changer
+ * Plugin URI: https://github.com/TremiDkhar/enter-title-here-changer
  * Description: Replace the default 'Enter title here' in the new post
  * Version: 0.1.0
  * Author: Tremi Dkhar
- * Author URI: https://tremidkhar.com
+ * Author URI: https://github.com/TremiDkhar/
  * License: GPL-2.0+
  * License URI: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * Text Domain: ethc
@@ -51,10 +51,12 @@ final class Enter_Title_Here_Changer {
 			self::$instance = new self();
 
 			self::$instance->constants();
-			self::$instance->includes();
 
-			register_activation_hook( __FILE__, array( self::$instance, 'set_default_settings' ) );
-
+			if ( is_admin() ) {
+				include_once ETHC_PATH . 'admin/class-ethc-settings.php';
+				register_activation_hook( __FILE__, array( self::$instance, 'set_default_settings' ) );
+				new ETHC_Settings();
+			}
 		}
 
 		return self::$instance;
@@ -81,19 +83,6 @@ final class Enter_Title_Here_Changer {
 		// Plugin Path.
 		if ( ! defined( 'ETHC_PATH' ) ) {
 			define( 'ETHC_PATH', plugin_dir_path( __FILE__ ) );
-		}
-	}
-
-	/**
-	 * Include the required plugin files
-	 *
-	 * @since 0.1.0
-	 * @return void
-	 */
-	public function includes() {
-
-		if ( is_admin() ) {
-			include_once ETHC_PATH . 'admin/admin-pages.php';
 		}
 	}
 
