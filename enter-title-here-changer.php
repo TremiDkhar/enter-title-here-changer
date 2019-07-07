@@ -44,7 +44,7 @@ final class Enter_Title_Here_Changer {
 	 * @return object|Enter_Title_Here_Changer
 	 */
 	public static function instance() {
-		if ( ! isset( self::$instance ) && ! ( self::$instance instanceof Enter_Title_Here_Changer ) ) {
+		if ( ! isset( self::$instance ) && ! ( self::$instance instanceof self ) ) {
 
 			self::$instance = new self();
 
