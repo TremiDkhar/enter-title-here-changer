@@ -3,7 +3,7 @@
  * Plugin Name: Enter Title Here Changer
  * Plugin URI: https://github.com/TremiDkhar/enter-title-here-changer
  * Description: Replace the default 'Enter title here' in the new post
- * Version: 0.1.0
+ * Version: 0.2.0
  * Author: Tremi Dkhar
  * Author URI: https://github.com/TremiDkhar/
  * License: GPL-2.0+
@@ -72,7 +72,7 @@ final class Enter_Title_Here_Changer {
 
 		// Plugin Version.
 		if ( ! defined( 'ETHC_VERSION' ) ) {
-			define( 'ETHC_VERSION', '0.1.1' );
+			define( 'ETHC_VERSION', '0.2.0' );
 		}
 
 		// Plugin URI.

@@ -1,24 +1,20 @@
 === Enter Title Here Changer ===
 Contributors: tremidkhar
 Tags: admin
-Requires at least: 4.5.0
+Requires at least: 4.0.0
 Tested up to: 5.2.2
-Stable tag: 0.1.1
+Requires PHP: 5.6
+Stable tag: 0.2.0
 License: GPL-2.0+
 
-Replace the default \'Enter title here\' place in the new post title
+Replace the default \'Enter title here\' (Legacy) or \'Add Title\' (Gutenberg) placeholder when creating a new post.
 
 == Description ==
-Customize the default place holder of post title when user creates a new post. This is helpful, especially when using a custom post type.
+Using this plugins helps you to change the placeholder for the title field. This is helpful especially when using a Custom Post Type. For example, for a \'movie\' Custom Post Type, instead of \'Enter title here\' can be changed to \'Enter Movie Title\'.
 
 == Installation ==
 No installation instruction is required. This plugin works directly upon install.
 
 == Changelog ==
-== 0.1.1 - July 7, 2019 ==
-- Added: Add support for Custom Post Type
-- Added: Add uninstaller settings to delete data when the plugin is removed
-- Added: Add default plugin data
-
-== 0.1.0 - July 5, 2019 ==
-- Initial Release
+- Improved: Club all the settings functions inside settings class
+- Removed: Remove unnecessary methods
