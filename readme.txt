@@ -15,10 +15,10 @@ Customize the default place holder of post title when user creates a new post. T
 No installation instruction is required. This plugin works directly upon install.
 
 == Changelog ==
-== 0.1.1 - Unreleased==
+== 0.1.1 - July 7, 2019 ==
 - Added: Add support for Custom Post Type
 - Added: Add uninstaller settings to delete data when the plugin is removed
 - Added: Add default plugin data
 
-== 0.1.0 - July 7, 2019 ==
+== 0.1.0 - July 5, 2019 ==
 - Initial Release
