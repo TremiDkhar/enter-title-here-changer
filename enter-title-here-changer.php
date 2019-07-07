@@ -51,6 +51,8 @@ final class Enter_Title_Here_Changer {
 			self::$instance->constants();
 			self::$instance->includes();
 
+			register_activation_hook( __FILE__, array( self::$instance, 'set_default_settings' ) );
+
 		}
 
 		return self::$instance;
@@ -91,6 +93,20 @@ final class Enter_Title_Here_Changer {
 		if ( is_admin() ) {
 			include_once ETHC_PATH . 'admin/admin-pages.php';
 		}
+	}
+
+	/**
+	 * Set the default options for the plugin
+	 *
+	 * @since 0.1.1
+	 * @return void
+	 */
+	public function set_default_settings() {
+		$default  = array(
+			'uninstall_on_delete' => true,
+		);
+		$settings = wp_parse_args( get_option( 'ethc_settings', $default ) );
+		update_option( 'ethc_settings', $settings );
 	}
 
 }
