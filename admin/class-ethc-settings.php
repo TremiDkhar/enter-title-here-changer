@@ -136,9 +136,12 @@ class ETHC_Settings {
 	 */
 	public function new_title( $title ) {
 
-		$screen    = get_current_screen()->id;
-		$new_title = $this->settings;
-		$title     = $new_title[ $screen ];
+		$screen = get_current_screen()->post_type;
+
+		if ( ! empty( $screen ) ) {
+			$new_title = $this->settings;
+			$title     = $new_title[ $screen ];
+		}
 
 		return $title;
 	}

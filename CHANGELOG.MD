@@ -3,7 +3,8 @@
 ## [0.2.1] - Unreleased
 - Improved: More information is added to readme.txt files
 - Removed: Remove support for GitHub Updater
-- Changed: Plugin URI has been change to the WordPress repos URI.
+- Changed: Plugin URI has been change to the WordPress repos URI
+- Fixed: Fix the undefined error when trying to create a new quick draft in dashboard
 
 ## [0.2.0] - July 8, 2019
 - Uploaded to WordPress.org - Birthday of Enter Title Here
