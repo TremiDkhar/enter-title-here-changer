@@ -1,7 +1,7 @@
 <?php // phpcs:ignore WordPress.Files.FileName.InvalidClassFileName
 /**
  * Plugin Name: Enter Title Here Changer
- * Plugin URI: https://github.com/TremiDkhar/enter-title-here-changer
+ * Plugin URI: https://wordpress.org/plugins/enter-title-here-changer/
  * Description: Replace the default 'Enter title here' in the new post
  * Version: 0.2.0
  * Author: Tremi Dkhar
@@ -9,7 +9,6 @@
  * License: GPL-2.0+
  * License URI: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * Text Domain: ethc
- * GitHub Plugin URI: TremiDkhar/enter-title-here-changer
  *
  * @package ETHC
  * @author Tremi Dkhar
