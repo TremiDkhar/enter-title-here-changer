@@ -7,7 +7,7 @@
 - Fixed: Fix the undefined error when trying to create a new quick draft in dashboard
 
 ## [0.2.0] - July 8, 2019
-- Uploaded to WordPress.org - Birthday of Enter Title Here
+- Uploaded to WordPress.org - `Birthday of Enter Title Here Changer`
 - Improved: Club all the settings functions inside settings class
 - Removed: Remove unnecessary methods
 

@@ -17,6 +17,9 @@ By replacing the placeholder text when creating a new post, help to instruct use
 
 This plugin is inspired by an article at [WPBeginner](https://www.wpbeginner.com/wp-tutorials/how-to-replace-enter-title-here-text-in-wordpress/).
 
+### Bug Report
+If you spotted a bug, you are welcome to [report on GitHub](https://wordpress.org/plugins/enter-title-here-changer/). 
+
 
 == Usage ==
 Go to the `Settings -> Writing` menu to manage the placeholder.
@@ -33,6 +36,14 @@ No installation instruction is required. This plugin works directly upon install
 = Do this plugin work in Multisite? =
 No, the plugin does not work in Multisite. But it will be added in the later version.
 
+ == Upgrade Notice == 
+Fix the undefined error when trying to create a new quick draft in dashboard
+
 == Changelog ==
-- Improved: Club all the settings functions inside settings class
-- Removed: Remove unnecessary methods
+- Improved: More information is added to readme.txt files
+- Removed: Remove support for GitHub Updater
+- Changed: Plugin URI has been change to the WordPress repos URI
+- Fixed: Fix the undefined error when trying to create a new quick draft in dashboard
+
+= Earlier Version =
+For the changelog of earlier version, please see the [Release Page on GitHub](https://github.com/TremiDkhar/enter-title-here-changer/releases)
