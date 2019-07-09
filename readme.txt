@@ -4,7 +4,7 @@ Tags: admin, post, cpt, custom post types
 Requires at least: 4.5.0
 Tested up to: 5.2.2
 Requires PHP: 5.6
-Stable tag: 0.2.0
+Stable tag: 0.3.0
 License: GPL-2.0+
 
 Replace the default `Enter title here` (Legacy) or `Add Title` (Gutenberg) placeholder when creating a new post.
