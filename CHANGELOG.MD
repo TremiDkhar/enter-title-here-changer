@@ -3,7 +3,7 @@
 ## [0.3.1] - July 30, 2019
 - Fixed: Fix undefined error when editing media
 
-[0.3.1]: https://github.com/TremiDkhar/enter-title-here-changer/compare/0.3.0...0.3.
+[0.3.1]: https://github.com/TremiDkhar/enter-title-here-changer/compare/0.3.0...0.3.1
 
 ## [0.3.0] - July 9, 2019
 - Improved: More information is added to readme.txt files
