@@ -140,7 +140,9 @@ class ETHC_Settings {
 
 		if ( ! empty( $screen ) ) {
 			$new_title = $this->settings;
-			$title     = $new_title[ $screen ];
+			if ( ! empty( $new_title[ $screen ] ) ) {
+				$title = $new_title[ $screen ];
+			}
 		}
 
 		return $title;
