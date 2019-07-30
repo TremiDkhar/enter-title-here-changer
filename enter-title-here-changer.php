@@ -3,7 +3,7 @@
  * Plugin Name: Enter Title Here Changer
  * Plugin URI: https://wordpress.org/plugins/enter-title-here-changer/
  * Description: Replace the default `Enter title here` (Legacy) or `Add Title` (Gutenberg) placeholder when creating a new post.
- * Version: 0.3.0
+ * Version: 0.3.1
  * Author: Tremi Dkhar
  * Author URI: https://github.com/TremiDkhar/
  * License: GPL-2.0+
@@ -71,7 +71,7 @@ final class Enter_Title_Here_Changer {
 
 		// Plugin Version.
 		if ( ! defined( 'ETHC_VERSION' ) ) {
-			define( 'ETHC_VERSION', '0.3.0' );
+			define( 'ETHC_VERSION', '0.3.1' );
 		}
 
 		// Plugin URI.

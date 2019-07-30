@@ -4,7 +4,7 @@ Tags: admin, post, cpt, custom post types
 Requires at least: 4.5.0
 Tested up to: 5.2.2
 Requires PHP: 5.6
-Stable tag: 0.3.0
+Stable tag: 0.3.1
 License: GPL-2.0+
 
 Replace the default `Enter title here` (Legacy) or `Add Title` (Gutenberg) placeholder when creating a new post.
@@ -19,7 +19,6 @@ This plugin is inspired by an article at [WPBeginner](https://www.wpbeginner.com
 
 ### Bug Report
 If you spotted a bug, you are welcome to [report on GitHub](https://wordpress.org/plugins/enter-title-here-changer/). 
-
 
 == Usage ==
 Go to the `Settings -> Writing` menu to manage the placeholder.
@@ -36,14 +35,8 @@ No installation instruction is required. This plugin works directly upon install
 = Do this plugin work in Multisite? =
 No, the plugin does not work in Multisite. But it will be added in the later version.
 
- == Upgrade Notice == 
-Fix the undefined error when trying to create a new quick draft in dashboard
-
 == Changelog ==
-- Improved: More information is added to readme.txt files
-- Removed: Remove support for GitHub Updater
-- Changed: Plugin URI has been change to the WordPress repos URI
-- Fixed: Fix the undefined error when trying to create a new quick draft in dashboard
+- Fixed: Fix undefined error when editing media
 
 = Earlier Version =
 For the changelog of earlier version, please see the [Release Page on GitHub](https://github.com/TremiDkhar/enter-title-here-changer/releases)
