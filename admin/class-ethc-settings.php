@@ -9,11 +9,6 @@
  * @copyright Copyright (c) 2019, Tremi Dkhar
  */
 
-// Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) {
-	die( '0' );
-}
-
 /**
  * Enter Title Here Chnager Main Settings Class
  *
