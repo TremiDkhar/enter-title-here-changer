@@ -18,7 +18,7 @@ By replacing the placeholder text when creating a new post, help to instruct use
 This plugin is inspired by an article at [WPBeginner](https://www.wpbeginner.com/wp-tutorials/how-to-replace-enter-title-here-text-in-wordpress/).
 
 ### Bug Report
-If you spotted a bug, you are welcome to [report on GitHub](https://wordpress.org/plugins/enter-title-here-changer/). 
+If you spotted a bug, you are welcome to [Create a pull request on GitHub](https://github.com/TremiDkhar/enter-title-here-changer). 
 
 == Usage ==
 Go to the `Settings -> Writing` menu to manage the placeholder.
