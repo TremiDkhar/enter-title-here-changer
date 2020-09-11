@@ -1,5 +1,11 @@
 # Enter Title Here Changer Changelog
 
+## [0.3.2] - Unreleased
+- Fixed: Fixed link in the `readme.txt` that link to the GitHub repo
+- Removed: Get rid of unnecessary security checks at the beginning of php file
+
+[0.3.2]: https://github.com/TremiDkhar/enter-title-here-changer/compare/0.3.1...0.3.2
+
 ## [0.3.1] - July 30, 2019
 - Fixed: Fix undefined error when editing media
 
