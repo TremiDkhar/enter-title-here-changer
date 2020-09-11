@@ -43,7 +43,8 @@
 	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
 		<properties>
 			<property name="prefixes" type="array">
-				<element value="ethc"/>
+				<element value="Enter_Title_Here_Changer"/>
+				<element value="ETHC"/>
 			</property>
 		</properties>
 	</rule>
