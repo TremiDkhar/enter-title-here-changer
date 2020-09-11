@@ -113,3 +113,12 @@ function enter_title_here_changer() {
 
 // Get ETHC running.
 enter_title_here_changer();
+
+
+add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'ethc_add_action_links' );
+function ethc_add_action_links( $links ) {
+
+	$action_link['settings'] = '<a href="' . admin_url( 'options-general.php?page=ethc-settings' ) . '">Settings</a>';
+
+	return array_merge( $action_link, $links );
+}
