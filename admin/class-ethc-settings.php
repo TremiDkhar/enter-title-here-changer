@@ -11,7 +11,7 @@
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
-	die( '0' );
+	die();
 }
 
 /**

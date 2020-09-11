@@ -1,4 +1,4 @@
-<?php // phpcs:ignore WordPress.Files.FileName.InvalidClassFileName
+<?php
 /**
  * Plugin Name: Enter Title Here Changer
  * Plugin URI: https://wordpress.org/plugins/enter-title-here-changer/
@@ -17,7 +17,7 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
-	die( 0 );
+	die();
 }
 
 /**
@@ -31,7 +31,7 @@ final class Enter_Title_Here_Changer {
 	 * Main instance of EnterTitleHere
 	 *
 	 * @since 0.1.0
-	 * @var object|Enter_Title_Here_Changer
+	 * @var object Enter_Title_Here_Changer
 	 */
 	public static $instance;
 
@@ -105,7 +105,7 @@ final class Enter_Title_Here_Changer {
  * The main function that returns EnterTitleHere instance.
  *
  * @since 0.1.0
- * @return object|Enter_Title_Here_Changer
+ * @return object Enter_Title_Here_Changer
  */
 function enter_title_here_changer() {
 	return Enter_Title_Here_Changer::instance();
