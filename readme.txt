@@ -31,10 +31,6 @@ No installation instruction is required. This plugin works directly upon install
 2. Result in Gutenberg Editor
 3. Plugin Settings
 
-== Frequently Asked Questions ==
-= Do this plugin work in Multisite? =
-No, the plugin does not work in Multisite. But it will be added in the later version.
-
 == Changelog ==
 - Fixed: Fix undefined error when editing media
 
