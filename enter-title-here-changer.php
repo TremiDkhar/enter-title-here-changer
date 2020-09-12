@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Enter Title Here Changer
  * Plugin URI: https://wordpress.org/plugins/enter-title-here-changer/
- * Description: Replace the default `Enter title here` (Legacy) or `Add Title` (Gutenberg) placeholder when creating a new post.
+ * Description: Replace the default `Enter title here` (Classic Editor) or `Add Title` (Gutenberg Editor) placeholder when creating a new post or custom post type.
  * Version: 0.3.1
  * Author: Tremi Dkhar
  * Author URI: https://github.com/TremiDkhar/
@@ -42,7 +42,7 @@ final class Enter_Title_Here_Changer {
 	 *
 	 * @since 0.1.0
 	 * @static
-	 * @return object|Enter_Title_Here_Changer
+	 * @return object Enter_Title_Here_Changer
 	 */
 	public static function instance() {
 		if ( ! isset( self::$instance ) && ! ( self::$instance instanceof self ) ) {
@@ -52,7 +52,12 @@ final class Enter_Title_Here_Changer {
 			self::$instance->constants();
 
 			if ( is_admin() ) {
+				/**
+				 * @todo Move the include part to different method
+				 */
+				include_once ETHC_PATH . 'admin/actions.php';
 				include_once ETHC_PATH . 'admin/class-ethc-settings.php';
+
 				register_activation_hook( __FILE__, array( self::$instance, 'set_default_settings' ) );
 				new ETHC_Settings();
 			}
@@ -82,6 +87,11 @@ final class Enter_Title_Here_Changer {
 		// Plugin Path.
 		if ( ! defined( 'ETHC_PATH' ) ) {
 			define( 'ETHC_PATH', plugin_dir_path( __FILE__ ) );
+		}
+
+		// Plugin Root File.
+		if ( ! defined( 'ETHC_PLUGIN_FILE' ) ) {
+			define( 'ETHC_PLUGIN_FILE', __FILE__ );
 		}
 	}
 
@@ -113,12 +123,3 @@ function enter_title_here_changer() {
 
 // Get ETHC running.
 enter_title_here_changer();
-
-
-add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'ethc_add_action_links' );
-function ethc_add_action_links( $links ) {
-
-	$action_link['settings'] = '<a href="' . admin_url( 'options-general.php?page=ethc-settings' ) . '">Settings</a>';
-
-	return array_merge( $action_link, $links );
-}
