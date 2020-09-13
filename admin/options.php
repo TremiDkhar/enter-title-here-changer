@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Retrive the plugin option from the database.
+ * Retrive the Enter Title Here Changer plugin option from the database.
  *
  * @param string $key Option name.
  * @return string The value for the supplied $key in the database.
@@ -29,9 +29,10 @@ function ethc_get_option( $key = null ) {
 
 	$options = get_option( 'ethc_settings' );
 
-	$option = $options[ $key ];
+	if ( isset( $options[ $key ] ) ) {
+		return $options[ $key ];
+	}
 
-	return $option;
 }
 
 
