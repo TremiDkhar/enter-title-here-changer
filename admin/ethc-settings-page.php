@@ -36,14 +36,8 @@ unset( 	$post_types['attachment'],
 				<div class="postbox">
 					<h3 style="font-size:1.3em;"><?php _e( 'Settings', 'ethc' ); ?></h3>
 					<div class="inside">
-										<?php
-										// if ( isset( $_POST ) ) {
-										// 	$_POST['post-label'] = $post_types[$_POST['post-type']]->label;
-										// 	var_dump( $_POST );
-										// }
-										?>
 						<noscript>Please enable JavaScript for this page to function correctly</noscript>
-						<form method="post" action="">
+						<form method="post" action="<?php echo esc_url( add_query_arg( array( 'ethc-action' => 'modify' ) ) ); ?>">
 							<table class="form-table ethc-settings">
 								<tr valign="top">
 									<td style="padding-left: 0;">
