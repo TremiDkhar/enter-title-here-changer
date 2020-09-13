@@ -51,7 +51,15 @@ function ethc_get_placeholder( $post_type = null ) {
 
 	$placeholders = get_option( 'ethc_placeholders' );
 
-	$placeholder = $placeholders( $post_type );
+	$placeholder = $placeholders[ $post_type ]['placeholder'];
 
 	return $placeholder;
+}
+
+
+function ethc_get_all_placeholder() {
+
+	$placeholders = get_option( 'ethc_placeholders' );
+
+	return $placeholders;
 }
