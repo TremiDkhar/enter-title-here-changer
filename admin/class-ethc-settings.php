@@ -112,6 +112,9 @@ class ETHC_Settings {
 	 * @return void
 	 */
 	public function settings_page() {
+		if ( isset( $_GET[ 'ethc-action' ] ) && 'modify' === $_GET['ethc-action'] ) {
+			require_once ETHC_PATH . 'admin/placeholder-action.php';
+		}
 		require_once ETHC_PATH . 'admin/ethc-settings-page.php';
 	}
 
