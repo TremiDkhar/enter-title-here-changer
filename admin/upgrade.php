@@ -39,15 +39,15 @@ function ethc_upgrade() {
 function ethc_v0_4_0_upgrades() {
 
 	$placeholders = array();
-	$new_options = array();
-	$old_options = get_option( 'ethc_settings' );
+	$new_options  = array();
+	$old_options  = get_option( 'ethc_settings' );
 
 	$new_options['uninstall_on_delete'] = $old_options['uninstall_on_delete'];
-	$new_options['plugin_version'] = ETHC_VERSION;
+	$new_options['plugin_version']      = ETHC_VERSION;
 
 	unset( $old_options['uninstall_on_delete'] );
 
-	foreach( $old_options as $option => $value ) {
+	foreach ( $old_options as $option => $value ) {
 		$post_object = get_post_type_object( $option );
 
 		// It is not necessary to change the placeholder for post type that does not show in the admin interface.
@@ -56,7 +56,7 @@ function ethc_v0_4_0_upgrades() {
 		}
 
 		$placeholders[ $option ] = array(
-			'label'	=> $post_object->label,
+			'label'       => $post_object->label,
 			'placeholder' => $value,
 		);
 	}
