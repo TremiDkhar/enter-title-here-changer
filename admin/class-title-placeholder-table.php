@@ -29,6 +29,7 @@ class ETHC_Title_Placeholder_Table extends WP_List_Table {
 	 */
 	public function get_columns() {
 		$columns = array(
+			'cb'       => '<input type="checkbox" />',
 			'post_type'	  => __( 'Post Type', 'ethc' ),
 			'placeholder' => __( 'Modified Title Placeholder', 'ethc' ),
 		);
@@ -48,6 +49,26 @@ class ETHC_Title_Placeholder_Table extends WP_List_Table {
 	 */
 	public function column_default( $item, $column_name ) {
 		return $item[ $column_name ];
+	}
+
+	/**
+	 * Render the checkbox column
+	 *
+	 * @since 0.0.1 Beta
+	 * @param array $item Contains all the data for the checkbox column
+	 * @return string Display a checkbox
+	 */
+	function column_cb( $item ) {
+		return '<input type="checkbox" name="userid", value="" />';
+	}
+
+	public function column_post_type( $item ) {
+		$row_actions = array();
+
+		$row_actions['edit'] = '<a href="#">' . __( 'Edit') . '</a>';
+		$row_actions['delete'] = '<a href="#">' . __( 'Delete' ) . '</a>';
+
+		return $item['post_type'] . $this->row_actions( $row_actions );
 	}
 
 	/**
