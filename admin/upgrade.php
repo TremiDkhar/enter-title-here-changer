@@ -34,6 +34,7 @@ function ethc_upgrade() {
 /**
  * 0.4.0 Upgrade routine to migrate settings structure.
  *
+ * @since 0.4.0
  * @return void
  */
 function ethc_v0_4_0_upgrades() {
