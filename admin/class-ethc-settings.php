@@ -41,7 +41,7 @@ class ETHC_Settings {
 
 		$this->settings = get_option( 'ethc_settings' );
 		add_action( 'admin_menu', array( $this, 'register_settings' ) );
-		// add_filter( 'enter_title_here', array( $this, 'new_title' ) );
+		add_filter( 'enter_title_here', array( $this, 'new_editor_title_placeholder' ) );
 	}
 
 	/**
@@ -146,18 +146,16 @@ class ETHC_Settings {
 	 * @param string $title | The default placeholder.
 	 * @return string
 	 */
-	// public function new_title( $title ) {
+	public function new_editor_title_placeholder( $title ) {
 
-	// $screen = get_current_screen()->post_type;
+		$current_post_type = get_current_screen()->post_type;
+		$placeholders = ethc_get_all_placeholder();
 
-	// if ( ! empty( $screen ) ) {
-	// $new_title = $this->settings;
-	// if ( ! empty( $new_title[ $screen ] ) ) {
-	// $title = $new_title[ $screen ];
-	// }
-	// }
+		if ( array_key_exists( $current_post_type, $placeholders ) ) {
+			$title = ethc_get_placeholder( $current_post_type );
+		}
 
-	// return $title;
-	// }
+		return $title;
+	}
 
 }

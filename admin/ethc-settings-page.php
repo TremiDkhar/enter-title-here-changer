@@ -8,12 +8,13 @@
  */
 
 // Exit if accessed directly.
-if( ! defined( 'ABSPATH' ) ) {
+if ( ! defined( 'ABSPATH' ) ) {
 	exit();
 }
+
 $post_types = get_post_types( '', 'object' );
 
-// Remove the known post types that are not required to change title.
+// Remove the known post types that might not required to change the editor title placeholder.
 unset( 	$post_types['attachment'],
 		$post_types['revision'],
 		$post_types['nav_menu_item'],
@@ -23,6 +24,7 @@ unset( 	$post_types['attachment'],
 		$post_types['user_request'],
 		$post_types['wp_block']
 );
+// var_dump( $post_types );
 
 ?>
 <div class="wrap">
@@ -34,41 +36,64 @@ unset( 	$post_types['attachment'],
 				<div class="postbox">
 					<h3 style="font-size:1.3em;"><?php _e( 'Settings', 'ethc' ); ?></h3>
 					<div class="inside">
+										<?php
+										// if ( isset( $_POST ) ) {
+										// 	$_POST['post-label'] = $post_types[$_POST['post-type']]->label;
+										// 	var_dump( $_POST );
+										// }
+										?>
 						<noscript>Please enable JavaScript for this page to function correctly</noscript>
 						<form method="post" action="">
-							<table class="form-table ethc-settings" style="width:auto;">
+							<table class="form-table ethc-settings">
 								<tr valign="top">
 									<td style="padding-left: 0;">
 										<label>Post Type</label>
 										<p>
-											<select>
+											<select class="widefat" name="post-type">
 												<option></option>
 												<?php
-												foreach( $post_types as $post_type ) {
+												foreach ( $post_types as $post_type => $object ) {
+
+													// Exclude the post type that does not support title.
+													if ( ! post_type_supports( $post_type, 'title' ) ) {
+														continue;
+													}
+
+													// Exclude the post type that does not show in the ui.
+													if ( false === $object->show_ui ) {
+														continue;
+													}
+													?>
+													<option value="<?php echo esc_attr( $post_type ); ?>"><?php echo esc_attr( $object->label ); ?></option>
+													<?php
+												}
 												?>
-													<option value="<?php echo esc_attr( $post_type->name );?>"><?php echo esc_attr( $post_type->label ); ?></option>
-												<?php } ?>
 											</select>
 										</p>
 									</td>
 									<td>
 										<label>Placeholder Title</label>
 										<p>
-											<input type="text" class="regular-text" />
+											<input type="text" class="widefat" name="placeholder" />
 										</p>
 									</td>
 									<td style="vertical-align: bottom">
-										<span id="modify" class="button button-primary">Modify</span>
+										<!-- <span id="modify" class="button button-primary">Modify</span> -->
+										<?php submit_button( 'Modify', 'primary', 'submit', false ); ?>
 									</td>
 								</tr>
 							</table>
-							<?php
-
-							require_once ETHC_PATH . '/admin/class-title-placeholder-table.php';
-							submit_button( 'Save Changes', 'primary', 'submit', true );
-
-							?>
 						</form>
+						<?php
+						require_once ETHC_PATH . '/admin/class-title-placeholder-table.php';
+						$placeholder_table = new ETHC_Title_Placeholder_Table();
+						$placeholder_table->prepare_items();
+						?>
+						<form id="ethc-placeholder" method="get" action="">
+							<?php $placeholder_table->views(); ?>
+							<?php $placeholder_table->display(); ?>
+						</form>
+						<?php submit_button( 'Save Changes', 'primary', 'submit', true ); ?>
 					</div>
 				</div>
 			</div>
