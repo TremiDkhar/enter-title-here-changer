@@ -52,10 +52,9 @@ final class Enter_Title_Here_Changer {
 			self::$instance->constants();
 
 			if ( is_admin() ) {
-				/**
-				 * @todo Move the include part to different method
-				 */
+				// @todo Move the include part to different method
 				include_once ETHC_PATH . 'admin/actions.php';
+				include_once ETHC_PATH . 'admin/options.php';
 				include_once ETHC_PATH . 'admin/class-ethc-settings.php';
 
 				register_activation_hook( __FILE__, array( self::$instance, 'set_default_settings' ) );
