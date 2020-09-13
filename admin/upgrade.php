@@ -29,6 +29,9 @@ function ethc_upgrade() {
 	if ( version_compare( $ethc_version, '0.4.0', '<' ) ) {
 		ethc_v0_4_0_upgrades();
 	}
+
+	// @todo upgrade the plugin version in the database
+
 }
 
 /**
