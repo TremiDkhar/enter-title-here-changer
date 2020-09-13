@@ -87,7 +87,7 @@ unset( 	$post_types['attachment'],
 							<?php $placeholder_table->views(); ?>
 							<?php $placeholder_table->display(); ?>
 						</form>
-						<?php submit_button( 'Save Changes', 'primary', 'submit', true ); ?>
+						<?php // submit_button( 'Save Changes', 'primary', 'submit', true ); ?>
 					</div>
 				</div>
 			</div>
