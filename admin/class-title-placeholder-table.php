@@ -29,8 +29,8 @@ class ETHC_Title_Placeholder_Table extends WP_List_Table {
 	 */
 	public function get_columns() {
 		$columns = array(
-			'cb'       => '<input type="checkbox" />',
-			'post_type'	  => __( 'Post Type', 'ethc' ),
+			'cb'          => '<input type="checkbox" />',
+			'label'       => __( 'Post Type', 'ethc' ),
 			'placeholder' => __( 'Modified Title Placeholder', 'ethc' ),
 		);
 
@@ -62,13 +62,38 @@ class ETHC_Title_Placeholder_Table extends WP_List_Table {
 		return '<input type="checkbox" name="userid", value="" />';
 	}
 
-	public function column_post_type( $item ) {
+	public function column_label( $items ) {
+		// var_dump( $items );
 		$row_actions = array();
 
-		$row_actions['edit'] = '<a href="#">' . __( 'Edit') . '</a>';
-		$row_actions['delete'] = '<a href="#">' . __( 'Delete' ) . '</a>';
+		$row_actions['edit']   = sprintf(
+			'<a href="%s">%s</a>',
+			wp_nonce_url(
+				add_query_arg(
+					array(
+						'ethc-action' => 'edit',
+						'post-type'   => $items['post_type'],
+					)
+				),
+				'ethc_placeholder_nonce'
+			),
+			__( 'Edit', 'ethc' )
+		);
+		$row_actions['delete'] = sprintf(
+			'<a href="%s">%s</a>',
+			wp_nonce_url(
+				add_query_arg(
+					array(
+						'ethc-action' => 'delete',
+						'post-type'   => $items['post_type'],
+					)
+				),
+				'ethc_placeholder_nonce'
+			),
+			__( 'Delete', 'ethc' )
+		);
 
-		return $item['post_type'] . $this->row_actions( $row_actions );
+		return $items['label'] . $this->row_actions( $row_actions );
 	}
 
 	/**
@@ -84,9 +109,10 @@ class ETHC_Title_Placeholder_Table extends WP_List_Table {
 		$placeholders = get_option( 'ethc_placeholders' );
 
 		if ( $placeholders ) {
-			foreach ( $placeholders as $placeholder ) {
+			foreach ( $placeholders as $post_type => $placeholder ) {
 				$items[] = array(
-					'post_type' => $placeholder['label'],
+					'post_type'   => $post_type,
+					'label'       => $placeholder['label'],
 					'placeholder' => $placeholder['placeholder'],
 				);
 			}
