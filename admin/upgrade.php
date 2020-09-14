@@ -30,7 +30,11 @@ function ethc_upgrade() {
 		ethc_v0_4_0_upgrades();
 	}
 
-	// @todo upgrade the plugin version in the database
+	if ( version_compare( ethc_get_option( 'plugin_version' ), ETHC_VERSION, '<' ) ) {
+
+		ethc_update_option( 'plugin_version', ETHC_VERSION );
+
+	}
 
 }
 
