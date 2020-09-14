@@ -40,8 +40,8 @@ function ethc_get_option( $key = null ) {
  * Update the Enter Title Changer plugin option
  *
  * @since 0.4.0
- * @param [type] $key Option handle for the value.
- * @param [type] $value The user supplied value.
+ * @param string $key Option handle for the value.
+ * @param string $value The user supplied value.
  * @return bool
  */
 function ethc_update_option( $key = null, $value ) {
