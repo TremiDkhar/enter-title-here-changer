@@ -36,6 +36,28 @@ function ethc_get_option( $key = null ) {
 
 }
 
+/**
+ * Update the Enter Title Changer plugin option
+ *
+ * @since 0.4.0
+ * @param [type] $key Option handle for the value.
+ * @param [type] $value The user supplied value.
+ * @return bool
+ */
+function ethc_update_option( $key = null, $value ) {
+	if ( null === $key ) {
+		return;
+	}
+
+	$old_options = get_option( 'ethc_settings' );
+	$options     = array(
+		$key => $value,
+	);
+
+	$new_options = wp_parse_args( $options, $old_options );
+
+	return update_option( 'ethc_settings', $new_options );
+}
 
 /**
  * Retrived the saved editor title placeholder for the specified post type.
@@ -75,17 +97,17 @@ function ethc_set_placeholder( $post_type, $placeholder = '' ) {
 
 	$new_placeholder = array();
 	$old_placeholder = get_option( 'ethc_placeholders' );
-	$post_object = get_post_type_object( $post_type );
-	$label = isset( $post_object ) ? $post_object->label : '';
+	$post_object     = get_post_type_object( $post_type );
+	$label           = isset( $post_object ) ? $post_object->label : '';
 
 	$new_placeholder[ $post_type ] = array(
-		'label'		=> $label,
-		'placeholder'	=> $placeholder,
+		'label'       => $label,
+		'placeholder' => $placeholder,
 	);
 
 	$placeholders = wp_parse_args( $new_placeholder, $old_placeholder );
 
-	update_option( 'ethc_placeholders',  $placeholders );
+	update_option( 'ethc_placeholders', $placeholders );
 }
 
 /**
