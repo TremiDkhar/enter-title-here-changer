@@ -81,15 +81,12 @@ class ETHC_Title_Placeholder_Table extends WP_List_Table {
 		);
 		$row_actions['delete'] = sprintf(
 			'<a href="%s">%s</a>',
-			wp_nonce_url(
-				add_query_arg(
-					array(
-						'ethc-action' => 'delete',
-						'post-type'   => $items['post_type'],
-					)
-				),
-				'ethc_placeholder_nonce'
-			),
+			wp_nonce_url( add_query_arg(
+				array(
+					'ethc-action' => 'delete',
+					'post-type'   => $items['post_type'],
+				)
+			), 'ethc_placeholder_nonce' ),
 			__( 'Delete', 'ethc' )
 		);
 
