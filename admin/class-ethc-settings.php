@@ -112,7 +112,7 @@ class ETHC_Settings {
 	 * @return void
 	 */
 	public function settings_page() {
-		if ( isset( $_GET[ 'ethc-action' ] ) && 'modify' === $_GET['ethc-action'] ) {
+		if ( isset( $_GET['ethc-action'] ) ) {
 			require_once ETHC_PATH . 'admin/placeholder-action.php';
 		}
 		require_once ETHC_PATH . 'admin/ethc-settings-page.php';
@@ -152,7 +152,7 @@ class ETHC_Settings {
 	public function new_editor_title_placeholder( $title ) {
 
 		$current_post_type = get_current_screen()->post_type;
-		$placeholders = ethc_get_all_placeholder();
+		$placeholders      = ethc_get_all_placeholder();
 
 		if ( array_key_exists( $current_post_type, $placeholders ) ) {
 			$title = ethc_get_placeholder( $current_post_type );
