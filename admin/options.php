@@ -110,6 +110,30 @@ function ethc_set_placeholder( $post_type, $placeholder = '' ) {
 	update_option( 'ethc_placeholders', $placeholders );
 }
 
+
+/**
+ * Delete the Custom Title Placeholder for specified post type
+ *
+ * @since 0.4.0
+ * @param string $post_type The Post Type.
+ * @return void
+ */
+function ethc_delete_placeholder( $post_type = null ) {
+
+	// Exit if the post type is not set.
+	if ( ! isset( $post_type ) ) {
+		return;
+	}
+
+	$placeholders = ethc_get_all_placeholder();
+
+	unset( $placeholders[ $post_type ] );
+
+	// @todo Return the status
+	update_option( 'ethc_placeholders', $placeholders );
+
+}
+
 /**
  * Retrive all the saved placeholder
  *
