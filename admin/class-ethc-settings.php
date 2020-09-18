@@ -40,7 +40,7 @@ class ETHC_Settings {
 	public function __construct() {
 
 		$this->settings = get_option( 'ethc_settings' );
-		add_action( 'admin_menu', array( $this, 'register_settings' ) );
+		add_action( 'admin_menu', array( $this, 'register_setting_page' ) );
 		add_filter( 'enter_title_here', array( $this, 'new_editor_title_placeholder' ) );
 	}
 
@@ -50,7 +50,7 @@ class ETHC_Settings {
 	 * @since 0.1.1
 	 * @return void
 	 */
-	public function register_setting() {
+	public function register_setting_page() {
 
 		add_submenu_page( 'options-general.php', 'Enter Title Here Changer Settings', 'ETHC Settings', 'manage_options', 'ethc-settings', array( $this, 'settings_page' ) );
 
