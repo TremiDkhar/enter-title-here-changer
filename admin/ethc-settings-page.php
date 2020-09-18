@@ -15,21 +15,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 $post_types = get_post_types( '', 'object' );
 
 // Remove the known post types that might not required to change the editor title placeholder.
-unset( 	$post_types['attachment'],
-		$post_types['revision'],
-		$post_types['nav_menu_item'],
-		$post_types['custom_css'],
-		$post_types['customize_changeset'],
-		$post_types['oembed_cache'],
-		$post_types['user_request'],
-		$post_types['wp_block']
+unset(
+	$post_types['attachment'],
+	$post_types['revision'],
+	$post_types['nav_menu_item'],
+	$post_types['custom_css'],
+	$post_types['customize_changeset'],
+	$post_types['oembed_cache'],
+	$post_types['user_request'],
+	$post_types['wp_block']
 );
-// var_dump( $post_types );
 
 ?>
 <div class="wrap">
 	<h2><?php _e( 'Enter Title Here Changer Settings', 'ethc' ); ?></h2>
-
 	<div id="poststuff">
 		<div id="post-body" class="metabox-holder columns-2">
 			<div id="post-body-content">
@@ -58,7 +57,7 @@ unset( 	$post_types['attachment'],
 														continue;
 													}
 													?>
-													<option value="<?php echo esc_attr( $post_type ); ?>"><?php echo esc_attr( $object->label ); ?></option>
+													<option value="<?php echo esc_attr( $post_type ); ?>" <?php selected( $post_type, isset( $edit_post ) ? $edit_post : '' ); ?>><?php echo esc_attr( $object->label ); ?></option>
 													<?php
 												}
 												?>
