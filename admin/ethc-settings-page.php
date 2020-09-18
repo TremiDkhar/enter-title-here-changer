@@ -25,10 +25,12 @@ unset(
 	$post_types['user_request'],
 	$post_types['wp_block']
 );
+// var_dump( $post_types );
 
 ?>
 <div class="wrap">
 	<h2><?php _e( 'Enter Title Here Changer Settings', 'ethc' ); ?></h2>
+
 	<div id="poststuff">
 		<div id="post-body" class="metabox-holder columns-2">
 			<div id="post-body-content">
@@ -42,6 +44,11 @@ unset(
 									<td style="padding-left: 0;">
 										<label>Post Type</label>
 										<p>
+											<?php
+											if ( isset( $_GET['ethc-action'] ) && $_GET['ethc-action'] === 'edit' && wp_verify_nonce( $_GET['_wpnonce'], 'ethc_placeholder_nonce' ) ) {
+												$edit_post = $_GET['post-type'];
+											}
+											?>
 											<select class="widefat" name="post-type">
 												<option></option>
 												<?php
