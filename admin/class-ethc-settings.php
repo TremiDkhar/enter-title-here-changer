@@ -41,6 +41,7 @@ class ETHC_Settings {
 
 		$this->settings = get_option( 'ethc_settings' );
 		add_action( 'admin_menu', array( $this, 'register_setting_page' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_javascript' ) );
 		add_filter( 'enter_title_here', array( $this, 'new_editor_title_placeholder' ) );
 	}
 
@@ -54,6 +55,16 @@ class ETHC_Settings {
 
 		add_submenu_page( 'options-general.php', 'Enter Title Here Changer Settings', 'ETHC Settings', 'manage_options', 'ethc-settings', array( $this, 'settings_page' ) );
 
+	}
+
+	/**
+	 * Enqueue JavaScript
+	 *
+	 * @since 0.4.0
+	 * @return void
+	 */
+	public function enqueue_javascript() {
+		wp_enqueue_script( 'ethc', ETHC_URL . 'admin/js/script.js', array(), ETHC_VERSION, true );
 	}
 
 	/**
