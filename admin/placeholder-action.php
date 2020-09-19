@@ -14,6 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit();
 }
 
+// @todo Wrap in some sort of function or class
 if ( isset( $_POST['submit'] ) && 'Modify' === $_POST['submit'] ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Security check is not really necessary here
 
 	if ( isset( $_POST['post-type'] ) && isset( $_POST['placeholder'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Security check is not really necessary here
@@ -23,4 +24,8 @@ if ( isset( $_POST['submit'] ) && 'Modify' === $_POST['submit'] ) { // phpcs:ign
 
 		ethc_set_placeholder( $post_type, $placeholder );
 	}
+}
+
+if ( isset( $_GET['post-type'] ) && 'delete' === $_GET['ethc-action'] ) {
+	ethc_delete_placeholder( $_GET['post-type'] );
 }
