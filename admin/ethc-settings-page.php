@@ -25,7 +25,6 @@ unset(
 	$post_types['user_request'],
 	$post_types['wp_block']
 );
-// var_dump( $post_types );
 
 ?>
 <div class="wrap">
@@ -74,7 +73,7 @@ unset(
 									<td>
 										<label>Placeholder Title</label>
 										<p>
-											<input type="text" class="widefat" name="placeholder" />
+											<input type="text" class="widefat" name="placeholder" required/>
 										</p>
 									</td>
 									<td style="vertical-align: bottom">
@@ -93,7 +92,6 @@ unset(
 							<?php $placeholder_table->views(); ?>
 							<?php $placeholder_table->display(); ?>
 						</form>
-						<?php // submit_button( 'Save Changes', 'primary', 'submit', true ); ?>
 					</div>
 				</div>
 			</div>
