@@ -27,7 +27,7 @@ unset(
 );
 
 ?>
-<div class="wrap">
+<div class="ethc-wrap wrap">
 	<h2><?php _e( 'Enter Title Here Changer Settings', 'ethc' ); ?></h2>
 
 	<div id="poststuff">
