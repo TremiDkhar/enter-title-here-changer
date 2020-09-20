@@ -63,32 +63,10 @@ class ETHC_Title_Placeholder_Table extends WP_List_Table {
 	}
 
 	public function column_label( $items ) {
-		// var_dump( $items );
 		$row_actions = array();
 
-		$row_actions['edit']   = sprintf(
-			'<a href="%s">%s</a>',
-			wp_nonce_url(
-				add_query_arg(
-					array(
-						'ethc-action' => 'edit',
-						'post-type'   => $items['post_type'],
-					)
-				),
-				'ethc_placeholder_nonce'
-			),
-			__( 'Edit', 'ethc' )
-		);
-		$row_actions['delete'] = sprintf(
-			'<a href="%s">%s</a>',
-			wp_nonce_url( add_query_arg(
-				array(
-					'ethc-action' => 'delete',
-					'post-type'   => $items['post_type'],
-				)
-			), 'ethc_placeholder_nonce' ),
-			__( 'Delete', 'ethc' )
-		);
+		$row_actions['edit']   = $this->get_edit_link( $items['post_type'] );
+		$row_actions['delete'] = $this->get_delete_link( $items['post_type'] );
 
 		return $items['label'] . $this->row_actions( $row_actions );
 	}
@@ -146,15 +124,64 @@ class ETHC_Title_Placeholder_Table extends WP_List_Table {
 	 * @return void
 	 */
 	function no_items() {
-		_e( 'No Modified Post Placeholder found.', 'ethc' );
+		esc_html_e( 'No Modified Post Placeholder found.', 'ethc' );
 	}
 
 	/**
 	 * Remove the table top and button table display navigation.
 	 *
 	 * @since 0.4.0
+	 * @param string $which Determine whether its a top or bottom table nav.
 	 * @return void
 	 */
 	protected function display_tablenav( $which ) {
+	}
+
+	/**
+	 * Create the edit link for the particular item
+	 *
+	 * @since 0.4.0
+	 * @param string $post_type Post Type.
+	 * @return string HTML Markup for the link.
+	 */
+	public function get_edit_link( $post_type ) {
+		return sprintf(
+			'<a href="%s">%s</a>',
+			wp_nonce_url(
+				add_query_arg(
+					array(
+						'ethc-action' => 'edit',
+						'post-type'   => $post_type,
+					)
+				),
+				'ethc_placeholder_nonce'
+			),
+			__( 'Edit', 'ethc' )
+		);
+
+	}
+
+	/**
+	 * Create the delete markup link for the item
+	 *
+	 * @since 0.4.0
+	 * @param string $post_type Post Type.
+	 * @return void
+	 */
+	private function get_delete_link( $post_type ) {
+		return sprintf(
+			'<a href="%s">%s</a>',
+			wp_nonce_url(
+				add_query_arg(
+					array(
+						'ethc-action' => 'delete',
+						'post-type'   => $post_type,
+					)
+				),
+				'ethc_placeholder_nonce'
+			),
+			__( 'Delete', 'ethc' )
+		);
+
 	}
 }
