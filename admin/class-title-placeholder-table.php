@@ -42,8 +42,8 @@ class ETHC_Title_Placeholder_Table extends WP_List_Table {
 	 *
 	 * @since 0.4.0
 	 *
-	 * @param array $item Contains all the data of the placeholder
-	 * @param array $column_name The name of the column
+	 * @param array $item Contains all the data of the placeholder.
+	 * @param array $column_name The name of the column.
 	 *
 	 * @return string
 	 */
@@ -55,7 +55,7 @@ class ETHC_Title_Placeholder_Table extends WP_List_Table {
 	 * Render the checkbox column
 	 *
 	 * @since 0.0.1 Beta
-	 * @param array $item Contains all the data for the checkbox column
+	 * @param array $item Contains all the data for the checkbox column.
 	 * @return string Display a checkbox
 	 */
 	function column_cb( $item ) {
@@ -142,11 +142,11 @@ class ETHC_Title_Placeholder_Table extends WP_List_Table {
 	 *
 	 * @since 0.4.0
 	 * @param string $post_type Post Type.
-	 * @return string HTML Markup for the link.
+	 * @return string HTML Markup for the edit link.
 	 */
 	public function get_edit_link( $post_type ) {
 		return sprintf(
-			'<a href="%s">%s</a>',
+			'<a href="%s" data-post-type="%s">%s</a>',
 			wp_nonce_url(
 				add_query_arg(
 					array(
@@ -156,6 +156,7 @@ class ETHC_Title_Placeholder_Table extends WP_List_Table {
 				),
 				'ethc_placeholder_nonce'
 			),
+			$post_type,
 			__( 'Edit', 'ethc' )
 		);
 
@@ -166,11 +167,11 @@ class ETHC_Title_Placeholder_Table extends WP_List_Table {
 	 *
 	 * @since 0.4.0
 	 * @param string $post_type Post Type.
-	 * @return void
+	 * @return string HTML Markup for the delete link.
 	 */
 	private function get_delete_link( $post_type ) {
 		return sprintf(
-			'<a href="%s">%s</a>',
+			'<a href="%s" data-post-type="%s">%s</a>',
 			wp_nonce_url(
 				add_query_arg(
 					array(
@@ -180,6 +181,7 @@ class ETHC_Title_Placeholder_Table extends WP_List_Table {
 				),
 				'ethc_placeholder_nonce'
 			),
+			$post_type,
 			__( 'Delete', 'ethc' )
 		);
 
