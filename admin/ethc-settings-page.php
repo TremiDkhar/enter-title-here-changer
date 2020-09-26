@@ -48,7 +48,7 @@ unset(
 												$edit_post = $_GET['post-type'];
 											}
 											?>
-											<select class="widefat" name="post-type">
+											<select id="post-type" class="widefat" name="post-type">
 												<option></option>
 												<?php
 												foreach ( $post_types as $post_type => $object ) {
