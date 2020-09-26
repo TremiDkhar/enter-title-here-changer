@@ -60,6 +60,7 @@ class ETHC_Settings {
 	/**
 	 * Enqueue JavaScript
 	 *
+	 * @todo Enqueue the script only on the plugin page
 	 * @since 0.4.0
 	 * @return void
 	 */
