@@ -65,7 +65,7 @@ class ETHC_Title_Placeholder_Table extends WP_List_Table {
 	public function column_label( $items ) {
 		$row_actions = array();
 
-		$row_actions['edit']   = $this->get_edit_link( $items['post_type'] );
+		$row_actions['edit']   = $this->get_edit_link( $items['post_type'], $items['placeholder'] );
 		$row_actions['delete'] = $this->get_delete_link( $items['post_type'] );
 
 		return $items['label'] . $this->row_actions( $row_actions );
@@ -144,9 +144,9 @@ class ETHC_Title_Placeholder_Table extends WP_List_Table {
 	 * @param string $post_type Post Type.
 	 * @return string HTML Markup for the edit link.
 	 */
-	public function get_edit_link( $post_type ) {
+	public function get_edit_link( $post_type, $placeholder ) {
 		return sprintf(
-			'<a href="%s" data-post-type="%s">%s</a>',
+			'<a href="%s" data-post-type="%s" data-placeholder="%s">%s</a>',
 			wp_nonce_url(
 				add_query_arg(
 					array(
@@ -157,6 +157,7 @@ class ETHC_Title_Placeholder_Table extends WP_List_Table {
 				'ethc_placeholder_nonce'
 			),
 			$post_type,
+			$placeholder,
 			__( 'Edit', 'ethc' )
 		);
 
