@@ -64,6 +64,7 @@ class ETHC_Settings {
 	 * @return void
 	 */
 	public function enqueue_javascript() {
+		wp_enqueue_script( 'sweetalert', ETHC_URL . 'admin/js/sweetalert2.min.js', array(), ETHC_VERSION, true );
 		wp_enqueue_script( 'ethc', ETHC_URL . 'admin/js/script.js', array(), ETHC_VERSION, true );
 	}
 
