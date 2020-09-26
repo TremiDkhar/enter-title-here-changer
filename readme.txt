@@ -2,7 +2,7 @@
 Contributors: tremidkhar
 Tags: admin, post, cpt, custom post types
 Requires at least: 4.5.0
-Tested up to: 5.2.2
+Tested up to: 5.5.1
 Requires PHP: 5.6
 Stable tag: 0.3.1
 License: GPL-2.0+
