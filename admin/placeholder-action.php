@@ -15,9 +15,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // @todo Wrap in some sort of function or class
-if ( isset( $_POST['submit'] ) && 'Modify' === $_POST['submit'] ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Security check is not really necessary here
+if ( isset( $_POST['submit'] ) && 'Modify' === $_POST['submit'] ) {
 
-	if ( isset( $_POST['post-type'] ) && isset( $_POST['placeholder'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Security check is not really necessary here
+	if ( isset( $_POST['post-type'] ) && isset( $_POST['placeholder'] ) ) {
 
 		$post_type   = sanitize_text_field( $_POST['post-type'] );
 		$placeholder = sanitize_text_field( $_POST['placeholder'] );
