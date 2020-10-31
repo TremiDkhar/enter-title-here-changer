@@ -23,6 +23,34 @@
 
 	function handleDeleteLink(e) {
 		e.preventDefault();
+
+		const request = new XMLHttpRequest(),
+			postType = e.target.getAttribute("data-post-type"),
+			data = {
+				action: ETHC.action,
+				postType: postType,
+			};
+
+		request.open("POST", ETHC.ajax_url, true);
+		request.setRequestHeader(
+			"Content-Type",
+			"application/x-www-form-urlencoded; charset=UTF-8"
+		);
+
+		request.onload = function () {
+			console.log(request.response);
+		};
+
+		request.onerror = function () {
+			console.log("error");
+		};
+
+		const query = `action=ethc_handle_delete_placeholder&post-type=${e.target.getAttribute(
+			"data-post-type"
+		)}&ethc-action=delete&ajax=1`;
+		console.log(query);
+		request.send(query);
+
 		console.log(e.target.getAttribute("data-post-type"));
 	}
 })();
