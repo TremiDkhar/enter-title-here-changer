@@ -57,6 +57,7 @@ final class Enter_Title_Here_Changer {
 				include_once ETHC_PATH . 'admin/options.php';
 				include_once ETHC_PATH . 'admin/upgrade.php';
 				include_once ETHC_PATH . 'admin/class-ethc-settings.php';
+				include_once ETHC_PATH . 'admin/placeholder-actions.php';
 
 				register_activation_hook( __FILE__, array( self::$instance, 'set_default_settings' ) );
 				new ETHC_Settings();
