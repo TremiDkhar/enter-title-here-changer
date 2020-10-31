@@ -1,19 +1,24 @@
 "use strict";
 
 (function () {
+
+	// Get all the required DOM element.
 	const postType = document.getElementById("post-type"),
 		placeholder = document.getElementById("placeholder"),
 		editLinks = document.querySelectorAll(".ethc-wrap .edit a"),
 		deleteLinks = document.querySelectorAll(".ethc-wrap .delete a");
 
+	// Add event listener to all the edit link.
 	editLinks.forEach((link) => {
 		link.addEventListener("click", handleEditLink);
 	});
 
+	// Add event listener to all the delete link.
 	deleteLinks.forEach((link) => {
 		link.addEventListener("click", handleDeleteLink);
 	});
 
+	// Event handler to handle all the edit link
 	function handleEditLink(e) {
 		e.preventDefault();
 		postType.value = e.target.getAttribute("data-post-type");
@@ -21,6 +26,7 @@
 		placeholder.focus();
 	}
 
+	// Event handler to handle all the delete link
 	function handleDeleteLink(e) {
 		e.preventDefault();
 
