@@ -78,7 +78,10 @@ unset(
 									</td>
 									<td style="vertical-align: bottom">
 										<!-- <span id="modify" class="button button-primary">Modify</span> -->
-										<?php submit_button( 'Modify', 'primary', 'submit', false ); ?>
+										<p>
+											<input type="hidden" name="ethc-placeholder-nonce" value="<?php echo wp_create_nonce( 'ethc_placeholder_nonce' ); ?>" />
+											<?php submit_button( 'Modify', 'primary', 'submit', false ); ?>
+										</p>
 									</td>
 								</tr>
 							</table>
