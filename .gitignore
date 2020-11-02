@@ -43,3 +43,6 @@ vendor
 
 # Log File
 *.log
+
+# Bundle Script
+/admin/js/ethc.js
