@@ -1,7 +1,8 @@
-"use strict";
+import Swal from "sweetalert2";
+
+("use strict");
 
 (function () {
-
 	// Get all the required DOM element.
 	const postType = document.getElementById("post-type"),
 		placeholder = document.getElementById("placeholder"),
@@ -30,22 +31,22 @@
 	function handleDeleteLink(e) {
 		e.preventDefault();
 
-		swal({
-			title: 'Are you sure?',
-			text: 'Do you want to delete this placeholder?',
-			icon: 'warning',
+		Swal.fire({
+			title: "Are you sure?",
+			text: "Do you want to delete this placeholder?",
+			icon: "warning",
 			buttons: {
 				cancel: true,
 				confirm: "Confirm",
-			}
-		}).then( (confirm ) => {
-			if ( confirm ) {
+			},
+		}).then((confirm) => {
+			if (confirm) {
 				const request = new XMLHttpRequest(),
-				postType = e.target.getAttribute("data-post-type"),
-				data = {
-					action: ETHC.action,
-					postType: postType,
-				};
+					postType = e.target.getAttribute("data-post-type"),
+					data = {
+						action: ETHC.action,
+						postType: postType,
+					};
 
 				request.open("POST", ETHC.ajax_url, true);
 				request.setRequestHeader(
@@ -70,7 +71,5 @@
 				console.log(e.target.getAttribute("data-post-type"));
 			}
 		});
-
-
 	}
 })();
