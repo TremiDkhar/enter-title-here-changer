@@ -32,6 +32,9 @@ tests/clover.xml
 # NodeJS Modules
 node_modules
 
+# Yarn file
+yarn.lock
+
 # Composer Vendor
 vendor
 
