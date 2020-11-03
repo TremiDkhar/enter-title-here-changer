@@ -44,7 +44,6 @@ import Swal from 'sweetalert2';
 					'application/x-www-form-urlencoded; charset=UTF-8'
 				);
 
-				// @todo Add nonce
 				const query = `action=ethc_handle_add_placeholder&post-type=${e.target.getAttribute(
 					'data-post-type'
 				)}&placeholder=${
@@ -116,7 +115,6 @@ import Swal from 'sweetalert2';
 					'application/x-www-form-urlencoded; charset=UTF-8'
 				);
 
-				// @todo Add Nonce
 				const query = `action=ethc_handle_delete_placeholder&post-type=${e.target.getAttribute(
 					'data-post-type'
 				)}&ethc-action=delete&ajax=1&ethc-placeholder-nonce=${
