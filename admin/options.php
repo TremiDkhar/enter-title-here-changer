@@ -107,7 +107,7 @@ function ethc_set_placeholder( $post_type, $placeholder = '' ) {
 
 	$placeholders = wp_parse_args( $new_placeholder, $old_placeholder );
 
-	update_option( 'ethc_placeholders', $placeholders );
+	return update_option( 'ethc_placeholders', $placeholders );
 }
 
 
