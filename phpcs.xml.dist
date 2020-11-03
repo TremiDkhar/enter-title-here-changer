@@ -14,8 +14,6 @@
 	<!-- Ignoring Vendor Files and Folders:
 		https://github.com/squizlabs/PHP_CodeSniffer/wiki/Advanced-Usage#ignoring-files-and-folders -->
 	<exclude-pattern>/node_modules/</exclude-pattern>
-	<exclude-pattern>/vendor/</exclude-pattern>
-	<exclude-pattern>*.min.*</exclude-pattern>
 
     <!-- Whenever possible, cache the scan results and re-use those for unchanged files on the next scan. -->
 	<arg name="cache"/>
@@ -28,7 +26,7 @@
 	<!-- How to scan -->
 	<arg value="sp"/> <!-- Show sniff and progress -->
 	<arg name="parallel" value="20"/> <!-- Enables parallel processing when available for faster results. -->
-	<arg name="extensions" value="php,js,css"/> <!-- Limit to PHP, JS and CSS files -->
+	<arg name="extensions" value="php"/> <!-- Only scan PHP files. -->
 
 	<!-- Rules: Check PHP version compatibility - see
 		https://github.com/PHPCompatibility/PHPCompatibilityWP -->
