@@ -57,7 +57,7 @@ import Swal from 'sweetalert2';
 				);
 
 				const query = `action=ethc_handle_delete_placeholder&post-type=${e.target.getAttribute(
-					'data-post-typess' // This should not delete successfully
+					'data-post-type'
 				)}&ethc-action=delete&ajax=1`;
 				console.log(query);
 
@@ -73,17 +73,18 @@ import Swal from 'sweetalert2';
 				});
 
 				request.onload = function () {
-					console.log(request.response);
+					console.log(request.response.status);
 
-					if (request.response.status === 1) {
+					if (request.response.status === true) {
 						Swal.fire({
 							title: 'Delete Successfully!',
 							icon: 'success',
 						});
-					} else if (request.response.status === 0) {
+					} else if (request.response.status === false) {
 						Swal.fire({
-							title: 'Stop!',
-							icon: 'warning',
+							title: 'An Error Occurred!',
+							icon: 'error',
+							text: 'Something wrong happened',
 						});
 					}
 				};
