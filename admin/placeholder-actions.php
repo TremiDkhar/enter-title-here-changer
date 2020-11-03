@@ -62,7 +62,7 @@ function ethc_handle_delete_placeholder() {
 			'status' => 1,
 		);
 
-		echo json_encode( $response );
+		echo wp_json_encode( $response );
 		wp_die();
 	}
 
