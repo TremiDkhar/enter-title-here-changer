@@ -11,6 +11,12 @@
 	<!-- What to scan -->
 	<file>.</file>
 
+	<!-- Ignoring Vendor Files and Folders:
+		https://github.com/squizlabs/PHP_CodeSniffer/wiki/Advanced-Usage#ignoring-files-and-folders -->
+	<exclude-pattern>/node_modules/</exclude-pattern>
+	<exclude-pattern>/vendor/</exclude-pattern>
+	<exclude-pattern>*.min.*</exclude-pattern>
+
     <!-- Whenever possible, cache the scan results and re-use those for unchanged files on the next scan. -->
 	<arg name="cache"/>
 
