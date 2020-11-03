@@ -47,7 +47,11 @@ import Swal from 'sweetalert2';
 				// @todo Add nonce
 				const query = `action=ethc_handle_add_placeholder&post-type=${e.target.getAttribute(
 					'data-post-type'
-				)}&placeholder=${confirm.value}&ethc-action=edit&ajax=1`;
+				)}&placeholder=${
+					confirm.value
+				}&ethc-action=edit&ajax=1&ethc-placeholder-nonce=${
+					ETHC.ethc_nonce
+				}`;
 
 				request.send(query);
 
@@ -115,7 +119,9 @@ import Swal from 'sweetalert2';
 				// @todo Add Nonce
 				const query = `action=ethc_handle_delete_placeholder&post-type=${e.target.getAttribute(
 					'data-post-type'
-				)}&ethc-action=delete&ajax=1`;
+				)}&ethc-action=delete&ajax=1&ethc-placeholder-nonce=${
+					ETHC.ethc_nonce
+				}`;
 
 				request.send(query);
 

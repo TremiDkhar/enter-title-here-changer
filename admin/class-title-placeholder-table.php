@@ -138,11 +138,13 @@ class ETHC_Title_Placeholder_Table extends WP_List_Table {
 			wp_nonce_url(
 				add_query_arg(
 					array(
-						'ethc-action' => 'edit',
+						'ethc-action' => 'modify',
 						'post-type'   => $post_type,
+						'placeholder' => $placeholder,
 					)
 				),
-				'ethc_placeholder_nonce'
+				'ethc_placeholder_nonce',
+				'ethc-placeholder-nonce'
 			),
 			$post_type,
 			$placeholder,
@@ -168,7 +170,8 @@ class ETHC_Title_Placeholder_Table extends WP_List_Table {
 						'post-type'   => $post_type,
 					)
 				),
-				'ethc_placeholder_nonce'
+				'ethc_placeholder_nonce',
+				'ethc-placeholder-nonce'
 			),
 			$post_type,
 			__( 'Delete', 'ethc' )

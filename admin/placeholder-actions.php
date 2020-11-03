@@ -23,9 +23,9 @@ add_action( 'admin_init', 'ethc_handle_add_placeholder' );
  */
 function ethc_handle_add_placeholder() {
 
-	// if ( ! isset( $_REQUEST['ethc-placeholder-nonce'] ) || ! ( wp_verify_nonce( $_REQUEST['ethc-placeholder-nonce'], 'ethc_placeholder_nonce' ) ) ) {
-	// 	return;
-	// }
+	if ( ! isset( $_REQUEST['ethc-placeholder-nonce'] ) || ! ( wp_verify_nonce( $_REQUEST['ethc-placeholder-nonce'], 'ethc_placeholder_nonce' ) ) ) {
+		return;
+	}
 
 	if ( ! current_user_can( 'manage_options' ) ) {
 		return;
@@ -47,6 +47,7 @@ function ethc_handle_add_placeholder() {
 			wp_die();
 		}
 	}
+
 }
 
 add_action( 'admin_init', 'ethc_handle_delete_placeholder' );
@@ -58,9 +59,9 @@ add_action( 'admin_init', 'ethc_handle_delete_placeholder' );
  */
 function ethc_handle_delete_placeholder() {
 
-	// if ( ! isset( $_POST['ethc-placeholder-nonce'] ) || ! ( wp_verify_nonce( $_POST['ethc-placeholder-nonce'], 'ethc_placeholder_nonce' ) ) ) {
-	// return;
-	// }
+	if ( ! isset( $_REQUEST['ethc-placeholder-nonce'] ) || ! ( wp_verify_nonce( $_REQUEST['ethc-placeholder-nonce'], 'ethc_placeholder_nonce' ) ) ) {
+		return;
+	}
 
 	if ( ! current_user_can( 'manage_options' ) ) {
 		return;

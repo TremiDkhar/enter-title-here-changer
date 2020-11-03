@@ -72,6 +72,7 @@ class ETHC_Settings {
 				'ETHC',
 				array(
 					'ajax_url' => admin_url( 'admin-ajax.php' ),
+					'ethc_nonce' => wp_create_nonce( 'ethc_placeholder_nonce' ),
 				)
 			);
 

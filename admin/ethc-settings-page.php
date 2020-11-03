@@ -37,14 +37,19 @@ unset(
 					<h3 style="font-size:1.3em;"><?php _e( 'Settings', 'ethc' ); ?></h3>
 					<div class="inside">
 						<noscript>Please enable JavaScript for this page to function correctly</noscript>
-						<form method="post" action="<?php echo esc_url( add_query_arg( array( 'ethc-action' => 'modify' ) ) ); ?>">
+						<form method="post" action="<?php echo esc_url( add_query_arg( array( 'ethc-action' => 'edit' ) ) ); ?>">
 							<table class="form-table ethc-settings">
 								<tr valign="top">
 									<td style="padding-left: 0;">
 										<label>Post Type</label>
 										<p>
 											<?php
-											if ( isset( $_GET['ethc-action'] ) && $_GET['ethc-action'] === 'edit' && wp_verify_nonce( $_GET['_wpnonce'], 'ethc_placeholder_nonce' ) ) {
+											if (
+													isset( $_GET['ethc-action'] ) &&
+													$_GET['ethc-action'] === 'modify' &&
+													isset( $_GET['ethc-placeholder-nonce'] ) &&
+													wp_verify_nonce( $_GET['ethc-placeholder-nonce'], 'ethc_placeholder_nonce' )
+												) {
 												$edit_post = $_GET['post-type'];
 											}
 											?>
