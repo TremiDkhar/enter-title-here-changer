@@ -66,7 +66,7 @@ class ETHC_Settings {
 	 */
 	public function enqueue_javascript() {
 		if ( isset( $_GET['page'] ) && 'ethc-settings' === $_GET['page'] ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Nonce check is not really Necessary
-			wp_enqueue_script( 'ethc', ETHC_URL . 'admin/js/ethc.js', array(), ETHC_VERSION, true );
+			wp_enqueue_script( 'ethc', ETHC_URL . 'admin/js/ethc.min.js', array(), ETHC_VERSION, true );
 			wp_localize_script(
 				'ethc',
 				'ETHC',
