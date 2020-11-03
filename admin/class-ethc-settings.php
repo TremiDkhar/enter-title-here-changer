@@ -65,7 +65,7 @@ class ETHC_Settings {
 	 * @return void
 	 */
 	public function enqueue_javascript() {
-		if ( 'ethc-settings' === isset( $_GET['page'] ) && $_GET['page'] ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Nonce check is not really Necessary
+		if ( isset( $_GET['page'] ) && 'ethc-settings' === $_GET['page'] ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Nonce check is not really Necessary
 			wp_enqueue_script( 'ethc', ETHC_URL . 'admin/js/ethc.js', array(), ETHC_VERSION, true );
 			wp_localize_script(
 				'ethc',
@@ -76,7 +76,6 @@ class ETHC_Settings {
 					'ethc_settings_page' => admin_url( 'options-general.php?page=ethc-settings' ),
 				)
 			);
-
 		}
 	}
 
