@@ -22,9 +22,70 @@ import Swal from 'sweetalert2';
 	// Event handler to handle all the edit link
 	function handleEditLink(e) {
 		e.preventDefault();
-		postType.value = e.target.getAttribute('data-post-type');
-		placeholder.value = e.target.getAttribute('data-placeholder');
-		placeholder.focus();
+
+		Swal.fire({
+			title: 'Change Placeholder',
+			inputLabel: `for ${e.target.getAttribute('data-post-type')}`,
+			input: 'text',
+			inputValue: e.target.getAttribute('data-placeholder'),
+			showCancelButton: true,
+			confirmButtonText: 'Edit',
+		}).then((confirm) => {
+			if (confirm.isConfirmed) {
+				// @todo It seem this code is repeated. Use DRY principle
+				const request = new XMLHttpRequest();
+
+				request.responseType = 'json';
+
+				request.open('POST', ETHC.ajax_url, true);
+
+				request.setRequestHeader(
+					'Content-Type',
+					'application/x-www-form-urlencoded; charset=UTF-8'
+				);
+
+				// @todo Add nonce
+				const query = `action=ethc_handle_add_placeholder&post-type=${e.target.getAttribute(
+					'data-post-type'
+				)}&placeholder=${confirm.value}&ethc-action=edit&ajax=1`;
+
+				request.send(query);
+
+				Swal.fire({
+					title: 'Updating Placeholder',
+					closeOnEsc: false,
+					allowOutsideClick: false,
+					onOpen: () => {
+						Swal.showLoading();
+					},
+				});
+
+				request.onload = () => {
+					if (request.response.status === true) {
+						Swal.fire({
+							title: 'Update Successfully',
+							icon: 'success',
+						});
+
+						// @todo Update the value dynamically
+						location.reload();
+					} else if (request.response.status === false) {
+						Swal.fire({
+							title: 'An Error Occurred!',
+							icon: 'error',
+							text: 'Something wrong happened',
+						});
+					}
+				};
+				request.onerror = () => {
+					Swal.fire({
+						title: 'Stop!',
+						text: 'An error has occurred',
+						icon: 'error',
+					});
+				};
+			}
+		});
 	}
 
 	// Event handler to handle all the delete link
@@ -51,10 +112,10 @@ import Swal from 'sweetalert2';
 					'application/x-www-form-urlencoded; charset=UTF-8'
 				);
 
+				// @todo Add Nonce
 				const query = `action=ethc_handle_delete_placeholder&post-type=${e.target.getAttribute(
 					'data-post-type'
 				)}&ethc-action=delete&ajax=1`;
-				console.log(query);
 
 				request.send(query);
 
@@ -68,13 +129,14 @@ import Swal from 'sweetalert2';
 				});
 
 				request.onload = function () {
-					console.log(request.response.status);
-
 					if (request.response.status === true) {
 						Swal.fire({
 							title: 'Delete Successfully!',
 							icon: 'success',
 						});
+
+						// @todo Update the value dynamically
+						location.reload();
 					} else if (request.response.status === false) {
 						Swal.fire({
 							title: 'An Error Occurred!',
@@ -85,18 +147,12 @@ import Swal from 'sweetalert2';
 				};
 
 				request.onerror = function () {
-					console.log(request);
-					console.log('error');
 					Swal.fire({
 						title: 'Stop!',
 						text: 'An error has occurred',
 						icon: 'error',
 					});
 				};
-
-				console.log(e.target.getAttribute('data-post-type'));
-
-				console.log(request.response);
 			}
 		});
 	}
