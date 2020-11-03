@@ -1,11 +1,11 @@
-const path = require("path");
+const path = require('path');
 
 module.exports = {
 	devtool: false,
-	entry: "./admin/js/script.js",
+	entry: './admin/js/script.js',
 	output: {
-		filename: "ethc.js",
-		path: path.resolve(__dirname, "admin/js"),
+		filename: 'ethc.min.js',
+		path: path.resolve(__dirname, 'admin/js'),
 	},
 	module: {
 		rules: [
@@ -13,7 +13,7 @@ module.exports = {
 				test: /\.m?js$/,
 				exclude: /node_modules/,
 				use: {
-					loader: "babel-loader",
+					loader: 'babel-loader',
 				},
 			},
 		],
