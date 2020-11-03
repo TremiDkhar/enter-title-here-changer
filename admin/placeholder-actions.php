@@ -22,18 +22,31 @@ add_action( 'admin_init', 'ethc_handle_add_placeholder' );
  * @return void
  */
 function ethc_handle_add_placeholder() {
-	if ( ! isset( $_POST['ethc-placeholder-nonce'] ) || ! ( wp_verify_nonce( $_POST['ethc-placeholder-nonce'], 'ethc_placeholder_nonce' ) ) ) {
-		return;
-	}
+
+	// if ( ! isset( $_REQUEST['ethc-placeholder-nonce'] ) || ! ( wp_verify_nonce( $_REQUEST['ethc-placeholder-nonce'], 'ethc_placeholder_nonce' ) ) ) {
+	// 	return;
+	// }
 
 	if ( ! current_user_can( 'manage_options' ) ) {
 		return;
 	}
 
-	$post_type   = sanitize_text_field( $_POST['post-type'] );
-	$placeholder = sanitize_text_field( $_POST['placeholder'] );
+	if ( isset( $_REQUEST['post-type'], $_REQUEST['ethc-action'] ) && 'edit' === $_REQUEST['ethc-action'] ) {
+		$post_type   = sanitize_text_field( $_REQUEST['post-type'] );
+		$placeholder = sanitize_text_field( $_REQUEST['placeholder'] );
 
-	ethc_set_placeholder( $post_type, $placeholder );
+		$status = ethc_set_placeholder( $post_type, $placeholder );
+
+		// @todo Repeated code, Use DRY principle
+		if ( isset( $_REQUEST['ajax'] ) && true === (bool) $_REQUEST['ajax'] ) {
+			$response = array(
+				'status' => $status,
+			);
+
+			echo wp_json_encode( $response );
+			wp_die();
+		}
+	}
 }
 
 add_action( 'admin_init', 'ethc_handle_delete_placeholder' );
@@ -44,8 +57,6 @@ add_action( 'admin_init', 'ethc_handle_delete_placeholder' );
  * @return void
  */
 function ethc_handle_delete_placeholder() {
-	$status = null;
-
 
 	// if ( ! isset( $_POST['ethc-placeholder-nonce'] ) || ! ( wp_verify_nonce( $_POST['ethc-placeholder-nonce'], 'ethc_placeholder_nonce' ) ) ) {
 	// return;
@@ -57,15 +68,16 @@ function ethc_handle_delete_placeholder() {
 
 	if ( isset( $_REQUEST['post-type'], $_REQUEST['ethc-action'] ) && 'delete' === $_REQUEST['ethc-action'] ) {
 		$status = ethc_delete_placeholder( $_REQUEST['post-type'] );
-	}
 
-	if ( isset( $_REQUEST['ajax'] ) && true === (bool) $_REQUEST['ajax'] ) {
-		$response = array(
-			'status' => $status,
-		);
+		// Return json if it is called using ajax.
+		if ( isset( $_REQUEST['ajax'] ) && true === (bool) $_REQUEST['ajax'] ) {
+			$response = array(
+				'status' => $status,
+			);
 
-		echo wp_json_encode( $response );
-		wp_die();
+			echo wp_json_encode( $response );
+			wp_die();
+		}
 	}
 
 }
