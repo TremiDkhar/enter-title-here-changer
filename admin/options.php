@@ -129,8 +129,7 @@ function ethc_delete_placeholder( $post_type = null ) {
 
 	unset( $placeholders[ $post_type ] );
 
-	// @todo Return the status
-	update_option( 'ethc_placeholders', $placeholders );
+	return update_option( 'ethc_placeholders', $placeholders );
 
 }
 
