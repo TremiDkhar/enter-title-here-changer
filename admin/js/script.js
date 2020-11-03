@@ -40,12 +40,7 @@ import Swal from 'sweetalert2';
 			showLoaderOnConfirm: true,
 		}).then((confirm) => {
 			if (confirm.isConfirmed) {
-				const request = new XMLHttpRequest(),
-					postType = e.target.getAttribute('data-post-type'),
-					data = {
-						action: ETHC.action,
-						postType: postType,
-					};
+				const request = new XMLHttpRequest();
 
 				request.responseType = 'json';
 
