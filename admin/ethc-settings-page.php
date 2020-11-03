@@ -46,7 +46,7 @@ unset(
 											<?php
 											if (
 													isset( $_GET['ethc-action'] ) &&
-													$_GET['ethc-action'] === 'modify' &&
+													'modify' === $_GET['ethc-action'] &&
 													isset( $_GET['ethc-placeholder-nonce'] ) &&
 													wp_verify_nonce( $_GET['ethc-placeholder-nonce'], 'ethc_placeholder_nonce' )
 												) {

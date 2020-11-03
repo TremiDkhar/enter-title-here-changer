@@ -65,7 +65,7 @@ class ETHC_Settings {
 	 * @return void
 	 */
 	public function enqueue_javascript() {
-		if ( isset( $_GET['page'] ) && $_GET['page'] === 'ethc-settings' ) {
+		if ( 'ethc-settings' === isset( $_GET['page'] ) && $_GET['page'] ) {
 			wp_enqueue_script( 'ethc', ETHC_URL . 'admin/js/ethc.js', array(), ETHC_VERSION, true );
 			wp_localize_script(
 				'ethc',
