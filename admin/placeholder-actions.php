@@ -44,6 +44,8 @@ add_action( 'admin_init', 'ethc_handle_delete_placeholder' );
  * @return void
  */
 function ethc_handle_delete_placeholder() {
+	$status = null;
+
 
 	// if ( ! isset( $_POST['ethc-placeholder-nonce'] ) || ! ( wp_verify_nonce( $_POST['ethc-placeholder-nonce'], 'ethc_placeholder_nonce' ) ) ) {
 	// return;
@@ -53,13 +55,13 @@ function ethc_handle_delete_placeholder() {
 		return;
 	}
 
-	if ( isset( $_POST['post-type'], $_POST['ethc-action'] ) && 'delete' === $_POST['ethc-action'] ) {
-		ethc_delete_placeholder( $_POST['post-type'] );
+	if ( isset( $_REQUEST['post-type'], $_REQUEST['ethc-action'] ) && 'delete' === $_REQUEST['ethc-action'] ) {
+		$status = ethc_delete_placeholder( $_REQUEST['post-type'] );
 	}
 
-	if ( isset( $_POST['ajax'] ) && true === (bool) intval( $_POST['ajax'] ) ) {
+	if ( isset( $_REQUEST['ajax'] ) && true === (bool) $_REQUEST['ajax'] ) {
 		$response = array(
-			'status' => 1,
+			'status' => $status,
 		);
 
 		echo wp_json_encode( $response );
