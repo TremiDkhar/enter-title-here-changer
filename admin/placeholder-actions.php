@@ -46,6 +46,9 @@ function ethc_handle_add_placeholder() {
 			echo wp_json_encode( $response );
 			wp_die();
 		}
+
+		wp_safe_redirect( admin_url( 'options-general.php?page=ethc-settings' ) );
+		exit();
 	}
 
 }
@@ -79,6 +82,9 @@ function ethc_handle_delete_placeholder() {
 			echo wp_json_encode( $response );
 			wp_die();
 		}
+
+		wp_safe_redirect( admin_url( 'options-general.php?page=ethc-settings' ) );
+		exit();
 	}
 
 }

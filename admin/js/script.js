@@ -72,7 +72,7 @@ import Swal from 'sweetalert2';
 						});
 
 						// @todo Update the value dynamically
-						location.reload();
+						window.location.href = ETHC.ethc_settings_page;
 					} else if (request.response.status === false) {
 						Swal.fire({
 							title: 'An Error Occurred!',
@@ -142,7 +142,7 @@ import Swal from 'sweetalert2';
 						});
 
 						// @todo Update the value dynamically
-						location.reload();
+						window.location.href = ETHC.ethc_settings_page;
 					} else if (request.response.status === false) {
 						Swal.fire({
 							title: 'An Error Occurred!',
