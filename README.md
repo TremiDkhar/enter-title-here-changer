@@ -20,6 +20,10 @@ For feature or improvement, fork the [GitHub](https://github.com/tremidkhar/ente
 
 Go to the `Settings -> ETHC Settings` menu to manage the placeholder.
 
+## Donation
+
+If you want to support my work, you are welcome to donate [here](https://www.paypal.me/tremidkhar). Thanks in advance.
+
 ## Frequently Asked Questions
 
 ### Do this plugin work in Multisite?
