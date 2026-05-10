@@ -28,13 +28,13 @@ unset(
 
 ?>
 <div class="ethc-wrap wrap">
-	<h2><?php _e( 'Enter Title Here Changer Settings', 'ethc' ); ?></h2>
+	<h2><?php esc_html_e( 'Enter Title Here Changer Settings', 'enter-title-here-changer' ); ?></h2>
 
 	<div id="poststuff">
 		<div id="post-body" class="metabox-holder columns-2">
 			<div id="post-body-content">
 				<div class="postbox">
-					<h3 style="font-size:1.3em;"><?php _e( 'Settings', 'ethc' ); ?></h3>
+					<h3 style="font-size:1.3em;"><?php esc_html_e( 'Settings', 'enter-title-here-changer' ); ?></h3>
 					<div class="inside">
 						<noscript>Please enable JavaScript for this page to function correctly</noscript>
 						<form method="post" action="<?php echo esc_url( add_query_arg( array( 'ethc-action' => 'edit' ) ) ); ?>">

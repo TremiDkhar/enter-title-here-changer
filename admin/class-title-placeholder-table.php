@@ -29,8 +29,8 @@ class ETHC_Title_Placeholder_Table extends WP_List_Table {
 	 */
 	public function get_columns() {
 		$columns = array(
-			'label'       => __( 'Post Type', 'ethc' ),
-			'placeholder' => __( 'Modified Title Placeholder', 'ethc' ),
+			'label'       => __( 'Post Type', 'enter-title-here-changer' ),
+			'placeholder' => __( 'Modified Title Placeholder', 'enter-title-here-changer' ),
 		);
 
 		return $columns;
@@ -112,7 +112,7 @@ class ETHC_Title_Placeholder_Table extends WP_List_Table {
 	 * @return void
 	 */
 	function no_items() {
-		esc_html_e( 'No Modified Post Placeholder found.', 'ethc' );
+		esc_html_e( 'No Modified Post Placeholder found.', 'enter-title-here-changer' );
 	}
 
 	/**
@@ -130,6 +130,8 @@ class ETHC_Title_Placeholder_Table extends WP_List_Table {
 	 *
 	 * @since 0.4.0
 	 * @param string $post_type Post Type.
+	 * @param string $placeholder Placeholder for the post type.
+	 *
 	 * @return string HTML Markup for the edit link.
 	 */
 	public function get_edit_link( $post_type, $placeholder ) {
@@ -148,7 +150,7 @@ class ETHC_Title_Placeholder_Table extends WP_List_Table {
 			),
 			$post_type,
 			$placeholder,
-			__( 'Edit', 'ethc' )
+			__( 'Edit', 'enter-title-here-changer' )
 		);
 
 	}
@@ -174,7 +176,7 @@ class ETHC_Title_Placeholder_Table extends WP_List_Table {
 				'ethc-placeholder-nonce'
 			),
 			$post_type,
-			__( 'Delete', 'ethc' )
+			__( 'Delete', 'enter-title-here-changer' )
 		);
 
 	}

@@ -4,7 +4,7 @@ Tags: admin, post, cpt, custom post types
 Requires at least: 4.5.0
 Tested up to: 5.5.3
 Requires PHP: 5.6
-Stable tag: 0.4.0
+Stable tag: 0.4.1
 Donate Link: https://www.paypal.me/tremidkhar
 License: GPLv2
 
