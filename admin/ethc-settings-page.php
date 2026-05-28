@@ -12,18 +12,25 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit();
 }
 
-$post_types = get_post_types( '', 'object' );
+$post_types = get_post_types(
+	array(
+		'public'   => true,
+		'show_ui'  => true,
+	),
+	'object'
+);
 
-// Remove the known post types that might not required to change the editor title placeholder.
-unset(
-	$post_types['attachment'],
-	$post_types['revision'],
-	$post_types['nav_menu_item'],
-	$post_types['custom_css'],
-	$post_types['customize_changeset'],
-	$post_types['oembed_cache'],
-	$post_types['user_request'],
-	$post_types['wp_block']
+// Post types that don't use the standard title editor field.
+$excluded_post_types = array_flip( array(
+	'attachment',
+) );
+
+$supported_post_types = array_filter(
+	$post_types,
+	function ( $post_type ) use ( $excluded_post_types ) {
+		return ! isset( $excluded_post_types[ $post_type->name ] )
+			&& post_type_supports( $post_type->name, 'title' );
+	}
 );
 
 ?>
@@ -57,16 +64,6 @@ unset(
 												<option></option>
 												<?php
 												foreach ( $post_types as $post_type => $object ) {
-
-													// Exclude the post type that does not support title.
-													if ( ! post_type_supports( $post_type, 'title' ) ) {
-														continue;
-													}
-
-													// Exclude the post type that does not show in the ui.
-													if ( false === $object->show_ui ) {
-														continue;
-													}
 													?>
 													<option value="<?php echo esc_attr( $post_type ); ?>" <?php selected( $post_type, isset( $edit_post ) ? $edit_post : '' ); ?>><?php echo esc_attr( $object->label ); ?></option>
 													<?php
@@ -84,7 +81,7 @@ unset(
 									<td style="vertical-align: bottom">
 										<!-- <span id="modify" class="button button-primary">Modify</span> -->
 										<p>
-											<input type="hidden" name="ethc-placeholder-nonce" value="<?php echo wp_create_nonce( 'ethc_placeholder_nonce' ); ?>" />
+											<input type="hidden" name="ethc-placeholder-nonce" value="<?php echo esc_attr( wp_create_nonce( 'ethc_placeholder_nonce' ) ); ?>" />
 											<?php submit_button( 'Modify', 'primary', 'submit', false ); ?>
 										</p>
 									</td>

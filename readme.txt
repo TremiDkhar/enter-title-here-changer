@@ -1,8 +1,8 @@
 === Enter Title Here Changer ===
 Contributors: tremidkhar
 Tags: admin, post, cpt, custom post types
-Requires at least: 4.5.0
-Tested up to: 5.5.3
+Requires at least: 4.5
+Tested up to: 7.0
 Requires PHP: 5.6
 Stable tag: 0.4.1
 Donate Link: https://www.paypal.me/tremidkhar
@@ -52,7 +52,10 @@ No, the plugin does not work in Multisite. But it will be added in the later ver
 Codebase has been improved.
 
 == Changelog ==
-- Code Refactoring
+= 0.4.2 =
+
+Fixed: Settings now list only post types that support titles.
+Improved: Excluded unsupported post types from placeholder configuration.
 
 ### Earlier Version
 For the changelog of the earlier version, please see the [Release Page on GitHub](https://github.com/TremiDkhar/enter-title-here-changer/releases)

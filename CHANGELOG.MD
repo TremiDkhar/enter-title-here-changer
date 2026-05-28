@@ -1,5 +1,11 @@
 # Enter Title Here Changer Changelog
 
+## [0.4.1] - May 11, 2026
+
+- Enhancement: Simplify JS build process using wp-scripts.
+- Fixed: Mismatched text domain.
+- Tested up to WordPress 7.0.
+
 ## [0.4.0] - November 4, 2020
 
 - Code Refactoring
